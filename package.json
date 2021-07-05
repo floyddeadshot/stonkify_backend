@@ -9,9 +9,14 @@
   "author": "Justin",
   "license": "ISC",
   "dependencies": {
+    "fs": "0.0.1-security",
     "googleapis": "^80.1.0",
+    "http-server": "^0.12.3",
     "node": "^16.4.0",
-    "stream": "0.0.2"
+    "open": "^8.2.1",
+    "server-destroy": "^1.0.1",
+    "stream": "0.0.2",
+    "url": "^0.11.0"
   },
   "devDependencies": {
     "@types/node": "^16.0.0"

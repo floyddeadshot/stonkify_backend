@@ -8,7 +8,7 @@ export class youtubeAPI {
             auth: 'AIzaSyAKwCfULBImkjAzWrVTeAztFCRiWQnqP5M'
         })
     }
-    async getVideoStatistics() {
+    async getVideoStatistics(video_id) {
         return this.youtube.videos.list({
             "part": [
                 "id",
@@ -16,8 +16,19 @@ export class youtubeAPI {
                 "statistics"
             ],
             "id": [
-                "IUL2pIETvJI"
+               video_id 
             ]
+        })
+    }
+    async getVideoAdRevenue(OAuth2Client,video_id){
+        const analyticsAPI=google.youtubeAnalytics({
+            version:"v2",
+            auth:OAuth2Client
+        })
+        analyticsAPI.reports.query({
+            dimensions:"day",
+            filters: `video==${video_id}`,
+            metrics:'views ,estimatedRevenue, estimatedAdRevenue, grossRevenue, estimatedRedPartnerRevenue, monetizedPlaybacks, playbackBasedCpm, adImpressions, cpm'
         })
     }
 }

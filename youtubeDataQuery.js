@@ -45,7 +45,7 @@ var youtubeAPI = /** @class */ (function () {
             auth: 'AIzaSyAKwCfULBImkjAzWrVTeAztFCRiWQnqP5M'
         });
     }
-    youtubeAPI.prototype.getVideoStatistics = function () {
+    youtubeAPI.prototype.getVideoStatistics = function (video_id) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 return [2 /*return*/, this.youtube.videos.list({
@@ -55,9 +55,26 @@ var youtubeAPI = /** @class */ (function () {
                             "statistics"
                         ],
                         "id": [
-                            "IUL2pIETvJI"
+                            video_id
                         ]
                     })];
+            });
+        });
+    };
+    youtubeAPI.prototype.getVideoAdRevenue = function (OAuth2Client, video_id) {
+        return __awaiter(this, void 0, void 0, function () {
+            var analyticsAPI;
+            return __generator(this, function (_a) {
+                analyticsAPI = googleapis_1.google.youtubeAnalytics({
+                    version: "v2",
+                    auth: OAuth2Client
+                });
+                analyticsAPI.reports.query({
+                    dimensions: "day",
+                    filters: "video==" + video_id,
+                    metrics: 'views ,estimatedRevenue, estimatedAdRevenue, grossRevenue, estimatedRedPartnerRevenue, monetizedPlaybacks, playbackBasedCpm, adImpressions, cpm'
+                });
+                return [2 /*return*/];
             });
         });
     };
