@@ -1,5 +1,6 @@
 import { google, youtube_v3 } from "googleapis"
 export class youtubeAPI {
+    //should be refactored. class structure doesnt make sense atm
     youtube: youtube_v3.Youtube;
     params;
     constructor() {
