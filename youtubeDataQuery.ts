@@ -27,6 +27,7 @@ export class youtubeAPI {
             auth:OAuth2Client
         })
         analyticsAPI.reports.query({
+            auth:OAuth2Client,
             dimensions:"day",
             filters: `video==${video_id}`,
             metrics:'views ,estimatedRevenue, estimatedAdRevenue, grossRevenue, estimatedRedPartnerRevenue, monetizedPlaybacks, playbackBasedCpm, adImpressions, cpm'
