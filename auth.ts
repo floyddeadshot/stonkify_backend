@@ -4,6 +4,7 @@ import url from 'url';
 import http from 'http'
 import open from 'open'
 import {promises as fs} from 'fs'
+
 //Useful links:
 //activate youtube analytics for project https://console.cloud.google.com/home/dashboard?project=stonkify-318719&folder=&organizationId=
 //add oauth2 client -> give clientID etc. https://github.com/googleapis/google-api-nodejs-client#oauth2-client
@@ -75,6 +76,8 @@ export class authUser{
             if (req.url.indexOf('/oauth2callback') > -1) {
               const qs = new url.URL(req.url, 'http://localhost:3000')
                 .searchParams;
+              //console.log(req.url)
+              //console.log(qs.get('code'))
               res.end('Authentication successful! Please return to the console.');
               server.close();
               const {tokens} = await this.applicationOAuth2Client.getToken(qs.get('code'));

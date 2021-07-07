@@ -1,7 +1,7 @@
 import { authUser } from './auth';
 import { youtubeAPI } from './youtubeDataQuery';
 
-let video_id="IUL2pIETvJI";
+let video_id="0VHcUY1uHQ4"//"j4YlSQTf0mQ";
 //Youtube v3 API
 const data=new youtubeAPI()
 /*
@@ -16,6 +16,6 @@ const creator=new authUser()
 creator.authenticate().then(()=>{
     //Now query data
     //https://developers.google.com/youtube/analytics/content_owner_reports#video-reports
-    console.log(creator.getCredentials())
-    //data.getVideoAdRevenue(creator.getCredentials(),video_id)
+    //console.log(creator.getCredentials())
+    data.getVideoAdRevenue(creator.getCredentials(),video_id)
 })

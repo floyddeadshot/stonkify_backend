@@ -2,7 +2,7 @@
 exports.__esModule = true;
 var auth_1 = require("./auth");
 var youtubeDataQuery_1 = require("./youtubeDataQuery");
-var video_id = "IUL2pIETvJI";
+var video_id = "0VHcUY1uHQ4"; //"j4YlSQTf0mQ";
 //Youtube v3 API
 var data = new youtubeDataQuery_1.youtubeAPI();
 /*
@@ -15,6 +15,6 @@ var creator = new auth_1.authUser();
 creator.authenticate().then(function () {
     //Now query data
     //https://developers.google.com/youtube/analytics/content_owner_reports#video-reports
-    console.log(creator.getCredentials());
-    //data.getVideoAdRevenue(creator.getCredentials(),video_id)
+    //console.log(creator.getCredentials())
+    data.getVideoAdRevenue(creator.getCredentials(), video_id);
 });

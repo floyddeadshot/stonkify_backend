@@ -65,15 +65,25 @@ var youtubeAPI = /** @class */ (function () {
         return __awaiter(this, void 0, void 0, function () {
             var analyticsAPI;
             return __generator(this, function (_a) {
+                //console.log(OAuth2Client)
+                googleapis_1.google.options({ auth: OAuth2Client });
                 analyticsAPI = googleapis_1.google.youtubeAnalytics({
                     version: "v2",
                     auth: OAuth2Client
                 });
                 analyticsAPI.reports.query({
                     auth: OAuth2Client,
+                    endDate: '2021-07-10',
+                    startDate: '2021-01-01',
                     dimensions: "day",
-                    filters: "video==" + video_id,
-                    metrics: 'views ,estimatedRevenue, estimatedAdRevenue, grossRevenue, estimatedRedPartnerRevenue, monetizedPlaybacks, playbackBasedCpm, adImpressions, cpm'
+                    ids: 'channel==MINE',
+                    //filters: `video==${video_id}`,
+                    metrics: 'views,averageViewDuration' //These lead to forbidden: estimatedRevenue,estimatedAdRevenue,grossRevenue,estimatedRedPartnerRevenue,monetizedPlaybacks,playbackBasedCpm,adImpressions,cpm'
+                    //probably as we are not registred to show ads?
+                }).then(function (res) {
+                    console.log(res.data);
+                })["catch"](function (err) {
+                    console.error(err);
                 });
                 return [2 /*return*/];
             });

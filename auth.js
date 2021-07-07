@@ -115,6 +115,8 @@ var authUser = /** @class */ (function () {
                                         if (!(req.url.indexOf('/oauth2callback') > -1)) return [3 /*break*/, 2];
                                         qs = new url_1["default"].URL(req.url, 'http://localhost:3000')
                                             .searchParams;
+                                        //console.log(req.url)
+                                        //console.log(qs.get('code'))
                                         res.end('Authentication successful! Please return to the console.');
                                         server.close();
                                         return [4 /*yield*/, this.applicationOAuth2Client.getToken(qs.get('code'))];
